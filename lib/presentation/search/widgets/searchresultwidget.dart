@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/core/constants.dart';
+import 'package:netflix/functions/release_function/search_function.dart';
+import 'package:netflix/presentation/search/searchscreen.dart';
 import 'package:netflix/presentation/search/widgets/searchtitle.dart';
 
 class SearchResultWidget extends StatelessWidget {
@@ -13,20 +15,36 @@ class SearchResultWidget extends StatelessWidget {
         const SearchTextTitle(title: 'Movies & TV'),
         kheigth20,
         Expanded(
-          child: GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 3,
-            mainAxisSpacing: 8,
-            crossAxisSpacing: 8,
-            childAspectRatio: 1 / 1.4,
-            children: List.generate(
-              20,
-              (index) {
-                return MainCard(
-                  index: index,
-                );
-              },
-            ),
+          child: FutureBuilder(
+            future: getimageSearchGrid(searchControllor.text.trim()),
+            builder: (context, snapshot) {
+              return GridView.builder(
+                shrinkWrap: true,
+                itemCount: snapshot.data!.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisExtent: 220,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  return snapshot.hasData
+                      ? Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      'https://image.tmdb.org/t/p/w200${snapshot.data?[index].posterPath}'),
+                                  fit: BoxFit.cover)),
+                        )
+                      : const Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.red,
+                          ),
+                        );
+                },
+              );
+            },
           ),
         ),
       ],

@@ -1,16 +1,15 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'downloads.dart';
+part of 'result.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Downloads _$$_DownloadsFromJson(Map<String, dynamic> json) => _$_Downloads(
+Result _$ResultFromJson(Map<String, dynamic> json) => Result(
       posterPath: json['poster_path'] as String?,
     );
 
-Map<String, dynamic> _$$_DownloadsToJson(_$_Downloads instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ResultToJson(Result instance) => <String, dynamic>{
       'poster_path': instance.posterPath,
     };

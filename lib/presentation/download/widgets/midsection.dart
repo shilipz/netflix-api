@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/core/constants.dart';
-import 'package:netflix/core/strings.dart';
+import 'package:netflix/functions/release_function/category_functions.dart';
 import 'package:netflix/presentation/download/widgets/downloadscreenimage.dart';
 
 import '../../../core/colors/colors.dart';
@@ -30,34 +30,42 @@ class SectionMid extends StatelessWidget {
         SizedBox(
           height: size.width,
           width: size.width,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Center(
-                child: CircleAvatar(
-                  backgroundColor: kgreycolor.withOpacity(0.5),
-                  radius: size.width * 0.35,
-                ),
-              ),
-              DownloadScreenImage(
-                size: Size(size.width * 0.4, size.width * 0.5),
-                image: '$imageaAppenturl}',
-                rotation: -15,
-                margin: const EdgeInsets.only(right: 150, bottom: 0),
-              ),
-              DownloadScreenImage(
-                size: Size(size.width * 0.4, size.width * 0.5),
-                image: '$imageaAppenturl}',
-                rotation: 15,
-                margin: const EdgeInsets.only(left: 150, bottom: 0),
-              ),
-              DownloadScreenImage(
-                size: Size(size.width * 0.4, size.width * 0.55),
-                image: '$imageaAppenturl',
-                rotation: 0,
-                margin: const EdgeInsets.only(top: 20),
-              ),
-            ],
+          child: FutureBuilder(
+            future: getImagePopular(),
+            builder: (context, snapshot) {
+              return Stack(
+                alignment: Alignment.center,
+                children: [
+                  Center(
+                    child: CircleAvatar(
+                      backgroundColor: kgreycolor.withOpacity(0.5),
+                      radius: size.width * 0.35,
+                    ),
+                  ),
+                  DownloadScreenImage(
+                    size: Size(size.width * 0.4, size.width * 0.5),
+                    image:
+                        'https://image.tmdb.org/t/p/w200${snapshot.data?[3].posterPath}',
+                    rotation: -15,
+                    margin: const EdgeInsets.only(right: 150, bottom: 0),
+                  ),
+                  DownloadScreenImage(
+                    size: Size(size.width * 0.4, size.width * 0.5),
+                    image:
+                        'https://image.tmdb.org/t/p/w200${snapshot.data?[11].posterPath}',
+                    rotation: 15,
+                    margin: const EdgeInsets.only(left: 150, bottom: 0),
+                  ),
+                  DownloadScreenImage(
+                    size: Size(size.width * 0.4, size.width * 0.55),
+                    image:
+                        'https://image.tmdb.org/t/p/w200${snapshot.data?[19].posterPath}',
+                    rotation: 0,
+                    margin: const EdgeInsets.only(top: 20),
+                  ),
+                ],
+              );
+            },
           ),
         ),
       ],

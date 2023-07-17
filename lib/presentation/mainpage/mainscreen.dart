@@ -8,12 +8,12 @@ import 'package:netflix/presentation/new&hot/newandhot.dart';
 import 'package:netflix/presentation/search/searchscreen.dart';
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+  MainScreen({super.key});
 
-  final pages = const [
+  final pages = [
     HomeScreen(),
-    NewAndHot(),
-    FastLaugh(),
+    ScreenNewHot(),
+    ScreenFastLaugh(),
     SearchScreen(),
     DownloadScreen()
   ];

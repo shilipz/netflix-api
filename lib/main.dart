@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           textTheme: const TextTheme(
               bodyLarge: TextStyle(color: Colors.white),
               bodyMedium: TextStyle(color: Colors.white))),
-      home: const MainScreen(),
+      home: MainScreen(),
     );
   }
 }

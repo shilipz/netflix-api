@@ -14,7 +14,8 @@ class BackGroundCardWidget extends StatelessWidget {
           width: double.infinity,
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/lastofuscover.jpg'),
+                  image: NetworkImage(
+                      'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vQiryp6LioFxQThywxbC6TuoDjy.jpg'),
                   fit: BoxFit.cover)),
         ),
         Positioned(
